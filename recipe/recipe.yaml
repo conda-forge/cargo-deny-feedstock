@@ -1,5 +1,5 @@
 context:
-  version: "0.18.2"
+  version: "0.18.3"
 
 package:
   name: cargo-deny
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/EmbarkStudios/cargo-deny/archive/refs/tags/${{ version }}.tar.gz
-  sha256: bb47741fada886c166e2a697a87fe93fca38ec083db489d404c73bcb0b9d7445
+  sha256: 4d15dbd7cc653fcb53a21e42b0adaab6b501693c939b76e4a7683c04a4a689ad
 
 build:
   number: 0
@@ -18,11 +18,11 @@ build:
     content:
       - if: unix
         then:
-          - cargo install --no-track --locked --root ${PREFIX} --path .
+          - cargo auditable install --no-track --locked --root ${PREFIX} --path .
           - cargo-bundle-licenses --format yaml --output ${SRC_DIR}/THIRDPARTY.yml
       - if: win
         then:
-          - cargo install --no-track --locked --root %PREFIX% --path .
+          - cargo auditable install --no-track --locked --root %PREFIX% --path .
           - if errorlevel 1 exit 1
           - cargo-bundle-licenses --format yaml --output %SRC_DIR%/THIRDPARTY.yml
           - if errorlevel 1 exit 1
@@ -33,6 +33,7 @@ requirements:
     - ${{ stdlib('c') }}
     - ${{ compiler('c') }}
     - cargo-bundle-licenses
+    - cargo-auditable
 
 tests:
   - script:
