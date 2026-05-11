@@ -1,5 +1,5 @@
 context:
-  version: "0.19.5"
+  version: "0.19.6"
 
 package:
   name: cargo-deny
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/EmbarkStudios/cargo-deny/archive/refs/tags/${{ version }}.tar.gz
-  sha256: 48e5c691dfb246c37a078381b7d66300d9173fe7dbcb3bffeda81826650c5f40
+  sha256: e852cbc4effc3de40e0d77066898234aef014f6740e61406288f56c26cf58d83
 
 build:
   number: 0
